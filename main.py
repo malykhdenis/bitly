@@ -54,17 +54,16 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('user_input', help='link')
     args = parser.parse_args()
-    user_input = args.user_input
-    if is_bitlink(bitly_token, user_input):
+    if is_bitlink(bitly_token, args.user_input):
         try:
-            clicks_count = count_clicks(bitly_token, user_input)
+            clicks_count = count_clicks(bitly_token, args.user_input)
         except requests.exceptions.HTTPError:
             print('Вы ввели неправильную ссылку или неверный токен.')
         else:
             print(clicks_count)
     else:
         try:
-            bitlink = shorten_link(bitly_token, user_input)
+            bitlink = shorten_link(bitly_token, args.user_input)
         except requests.exceptions.HTTPError:
             print('Вы ввели неправильную ссылку или неверный токен.')
         else:
