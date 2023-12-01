@@ -55,7 +55,6 @@ if __name__ == '__main__':
     parser.add_argument('user_input', help='link')
     args = parser.parse_args()
     user_input = args.user_input
-    # user_input = input()
     if is_bitlink(bitly_token, user_input):
         try:
             clicks_count = count_clicks(bitly_token, user_input)
